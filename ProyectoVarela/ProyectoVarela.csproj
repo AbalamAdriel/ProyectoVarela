@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0FA44368-0CCA-4C15-A0CA-583B74900995}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProyectoVarela</RootNamespace>
+    <AssemblyName>ProyectoVarela</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsultarEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarEmpleados.Designer.cs">
+      <DependentUpon>ConsultarEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarHerramienta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarHerramienta.Designer.cs">
+      <DependentUpon>ConsultarHerramienta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarMaterial.Designer.cs">
+      <DependentUpon>ConsultarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarPrestamos.designer.cs">
+      <DependentUpon>ConsultarPrestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarProvedor.Designer.cs">
+      <DependentUpon>ConsultarProvedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarProyecto.Designer.cs">
+      <DependentUpon>ConsultarProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarRegistro.Designer.cs">
+      <DependentUpon>ConsultarRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Prestamo.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IniciarSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IniciarSesion.Designer.cs">
+      <DependentUpon>IniciarSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarEmpleados.Designer.cs">
+      <DependentUpon>ModificarEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarHerramientas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarHerramientas.Designer.cs">
+      <DependentUpon>ModificarHerramientas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarMaterial.Designer.cs">
+      <DependentUpon>ModificarMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarPrestamos.designer.cs">
+      <DependentUpon>ModificarPrestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarProvedor.Designer.cs">
+      <DependentUpon>ModificarProvedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarProyecto.designer.cs">
+      <DependentUpon>ModificarProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prestamos.Designer.cs">
+      <DependentUpon>Prestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proyecto.Designer.cs">
+      <DependentUpon>Proyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPrestamos.Designer.cs">
+      <DependentUpon>RegistrarPrestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProyectos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarProyectos.designer.cs">
+      <DependentUpon>RegistrarProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroEmpleados.Designer.cs">
+      <DependentUpon>RegistroEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroHerramienta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroHerramienta.Designer.cs">
+      <DependentUpon>RegistroHerramienta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroMaterial.Designer.cs">
+      <DependentUpon>RegistroMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroProvedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroProvedor.Designer.cs">
+      <DependentUpon>RegistroProvedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilerias\SqlHelper.cs" />
+    <EmbeddedResource Include="ConsultarEmpleados.resx">
+      <DependentUpon>ConsultarEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarHerramienta.resx">
+      <DependentUpon>ConsultarHerramienta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarMaterial.resx">
+      <DependentUpon>ConsultarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarPrestamos.resx">
+      <DependentUpon>ConsultarPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarProvedor.resx">
+      <DependentUpon>ConsultarProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarProyecto.resx">
+      <DependentUpon>ConsultarProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IniciarSesion.resx">
+      <DependentUpon>IniciarSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarEmpleados.resx">
+      <DependentUpon>ModificarEmpleados.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarHerramientas.resx">
+      <DependentUpon>ModificarHerramientas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarMaterial.resx">
+      <DependentUpon>ModificarMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarPrestamos.resx">
+      <DependentUpon>ModificarPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarProvedor.resx">
+      <DependentUpon>ModificarProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarProyecto.resx">
+      <DependentUpon>ModificarProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prestamos.resx">
+      <DependentUpon>Prestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Proyecto.resx">
+      <DependentUpon>Proyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPrestamos.resx">
+      <DependentUpon>RegistrarPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarProyectos.resx">
+      <DependentUpon>RegistrarProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroEmpleados.resx">
+      <DependentUpon>RegistroEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroHerramienta.resx">
+      <DependentUpon>RegistroHerramienta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroMaterial.resx">
+      <DependentUpon>RegistroMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroProvedor.resx">
+      <DependentUpon>RegistroProvedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LAMINADO INDUSTRIAL VARELA__.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background_sec.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
