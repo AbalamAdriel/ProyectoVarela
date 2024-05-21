@@ -51,7 +51,7 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "INSERT INTO MATERIAL (IDMATERIAL,MATERIAL,TIPO,CALIBRE,MEDIDA,EXISTENCIA) VALUES (@IDMATERIAL,@MATERIAL,@TIPO,@CALIBRE,@MEDIDA,@EXISTENCIA)";
+                    string query = "INSERT INTO MATERIAL (IDMATERIAL,MATERIAL,TIPO,CALIBRE,MEDIDA,EXISTENCIA,ID_USER) VALUES (@IDMATERIAL,@MATERIAL,@TIPO,@CALIBRE,@MEDIDA,@EXISTENCIA,@ID_USER)";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@IDMATERIAL", txt_idmaterial.Text);
                     cmd.Parameters.AddWithValue("@MATERIAL", txt_material.Text);
@@ -59,6 +59,7 @@ namespace ProyectoVarela
                     cmd.Parameters.AddWithValue("@CALIBRE", txt_calibre.Text);
                     cmd.Parameters.AddWithValue("@MEDIDA", txt_medida.Text);
                     cmd.Parameters.AddWithValue("@EXISTENCIA", txt_existencia.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                     int fila = cmd.ExecuteNonQuery();
                     if (fila > 0)

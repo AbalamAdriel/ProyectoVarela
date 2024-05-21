@@ -37,12 +37,13 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "INSERT INTO HERRAMIENTAS (IDHERRAMIENTAS,NOMBRE,TIPOHERRAMIENTAS,EXISTENCIAH) VALUES (@IDHERRAMIENTAS,@NOMBRE,@TIPOHERRAMIENTAS,@EXISTENCIA)";
+                    string query = "INSERT INTO HERRAMIENTAS (IDHERRAMIENTAS,NOMBRE,TIPOHERRAMIENTAS,EXISTENCIAH,ID_USER) VALUES (@IDHERRAMIENTAS,@NOMBRE,@TIPOHERRAMIENTAS,@EXISTENCIA,@ID_USER)";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@IDHERRAMIENTAS", txt_idherramienta.Text);
                     cmd.Parameters.AddWithValue("@NOMBRE", txt_nombre.Text);
                     cmd.Parameters.AddWithValue("@TIPOHERRAMIENTAS", txt_tipo.Text);
                     cmd.Parameters.AddWithValue("@EXISTENCIA", txt_existencia.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                     int fila = cmd.ExecuteNonQuery();
                     if (fila > 0)

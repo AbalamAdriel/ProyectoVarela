@@ -82,7 +82,7 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "UPDATE EMPLEADOS SET NOMBRE = @nombre,DIRECCION = @direccion,CORREO = @correo,CELULAR=@celular,PUESTO=@puesto WHERE IDEMPLEADO = @id";
+                    string query = "UPDATE EMPLEADOS SET NOMBRE = @nombre,DIRECCION = @direccion,CORREO = @correo,CELULAR=@celular,PUESTO=@puesto, ID_USER = @ID_USER WHERE IDEMPLEADO = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", txt_idempleado.Text);
                     cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
@@ -90,6 +90,7 @@ namespace ProyectoVarela
                     cmd.Parameters.AddWithValue("@correo", txt_correo.Text);
                     cmd.Parameters.AddWithValue("@celular", txt_celular.Text);
                     cmd.Parameters.AddWithValue("@puesto", txt_puesto.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                     int filasActualizadas = cmd.ExecuteNonQuery();
                     if (filasActualizadas > 0)
                     {
@@ -140,6 +141,11 @@ namespace ProyectoVarela
 
                     if (EmpleadoExistente > 0)
                     {
+                        string queryContext = "INSERT INTO UsuarioContexto (SesionID) VALUES (@SesionID)";
+                        SqlCommand cmdContext = new SqlCommand(queryContext, cn);
+                        cmdContext.Parameters.AddWithValue("@SesionID", UserSession.UserId);
+                        cmdContext.ExecuteNonQuery();
+
                         string query = "DELETE FROM EMPLEADOS WHERE IDEMPLEADO = @id";
                         SqlCommand cmd = new SqlCommand(query, cn);
                         cmd.Parameters.AddWithValue("@id", txt_idempleado.Text);
@@ -161,9 +167,8 @@ namespace ProyectoVarela
                     }
                     else
                     {
-                        MessageBox.Show("NO SE ENCONTRÓ CLIENTE.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("NO SE ENCONTRÓ EMPLEADO.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
             }
         }

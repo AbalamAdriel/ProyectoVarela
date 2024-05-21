@@ -67,7 +67,7 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "INSERT INTO EMPLEADOS (IDEMPLEADO,NOMBRE,DIRECCION,CORREO,CELULAR,PUESTO) VALUES (@IDEMPLEADO,@NOMBRE,@DIRECCION,@CORREO,@CELULAR,@PUESTO)";
+                    string query = "INSERT INTO EMPLEADOS (IDEMPLEADO,NOMBRE,DIRECCION,CORREO,CELULAR,PUESTO,ID_USER) VALUES (@IDEMPLEADO,@NOMBRE,@DIRECCION,@CORREO,@CELULAR,@PUESTO,@ID_USER)";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@IDEMPLEADO", txt_idempleado.Text);
                     cmd.Parameters.AddWithValue("@NOMBRE", txt_nombre.Text);
@@ -75,6 +75,7 @@ namespace ProyectoVarela
                     cmd.Parameters.AddWithValue("@CORREO", txt_correo.Text);
                     cmd.Parameters.AddWithValue("@CELULAR", txt_celular.Text);
                     cmd.Parameters.AddWithValue("@PUESTO", txt_puesto.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                     int fila = cmd.ExecuteNonQuery();
                     if (fila > 0)

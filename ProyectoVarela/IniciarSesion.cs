@@ -24,9 +24,6 @@ namespace ProyectoVarela
                     return;
                 }
 
-                SqlHelper.userName = NumControl_Tbx.Text;
-                SqlHelper.password = Contraseña_Tbx.Text;
-
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     try
@@ -44,6 +41,19 @@ namespace ProyectoVarela
                         contraseñaCmd.Parameters.AddWithValue("@usuario", NumControl_Tbx.Text);
                         contraseñaCmd.Parameters.AddWithValue("@contrasena", Contraseña_Tbx.Text);
                         int contraseñaCount = (int)contraseñaCmd.ExecuteScalar();
+
+                        // Consulta para obtener el ID del usuario si el usuario y la contraseña coinciden
+                        string loginQuery = "SELECT ID_USER FROM Usuarios WHERE Usuario = @usuario AND Contrasena = @contrasena";
+                        SqlCommand loginCmd = new SqlCommand(loginQuery, cn);
+                        loginCmd.Parameters.AddWithValue("@usuario", NumControl_Tbx.Text);
+                        loginCmd.Parameters.AddWithValue("@contrasena", Contraseña_Tbx.Text);
+                        object result = loginCmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int userId = (int)result;
+                            UserSession.UserId = userId;
+                        }
 
                         if (numControlCount > 0 && contraseñaCount > 0)
                         {
@@ -65,7 +75,7 @@ namespace ProyectoVarela
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Usuario o contraseña incorrecto");
+                        MessageBox.Show("Error al conectarse a la base de datos");
                     }
                 }
             }

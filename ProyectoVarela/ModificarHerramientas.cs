@@ -81,12 +81,13 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "UPDATE HERRAMIENTAS SET NOMBRE = @nombre,TIPOHERRAMIENTAS = @tipo,EXISTENCIAH = @existencia WHERE IDHERRAMIENTAS = @id";
+                    string query = "UPDATE HERRAMIENTAS SET NOMBRE = @nombre,TIPOHERRAMIENTAS = @tipo,EXISTENCIAH = @existencia, ID_USER = @ID_USER WHERE IDHERRAMIENTAS = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", txt_idherramienta.Text);
                     cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
                     cmd.Parameters.AddWithValue("@tipo", txt_tipo.Text);
                     cmd.Parameters.AddWithValue("@existencia", txt_existencia.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                     int filasActualizadas = cmd.ExecuteNonQuery();
 
                     if (filasActualizadas > 0)
@@ -131,9 +132,15 @@ namespace ProyectoVarela
 
                     if (EmpleadoExistente > 0)
                     {
+                        string queryContext = "INSERT INTO UsuarioContexto (SesionID) VALUES (@SesionID)";
+                        SqlCommand cmdContext = new SqlCommand(queryContext, cn);
+                        cmdContext.Parameters.AddWithValue("@SesionID", UserSession.UserId);
+                        cmdContext.ExecuteNonQuery();
+
                         string query = "DELETE FROM HERRAMIENTAS WHERE IDHERRAMIENTAS = @id";
                         SqlCommand cmd = new SqlCommand(query, cn);
                         cmd.Parameters.AddWithValue("@id", txt_idherramienta.Text);
+                        cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("HERRAMIENTA ELIMINADO CORRECTAMENTE.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();

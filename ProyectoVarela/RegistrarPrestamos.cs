@@ -126,28 +126,28 @@ namespace ProyectoVarela
 
                 foreach (Prestamo prestamo in Prestamos)
                 {
-                    string query = "INSERT INTO Prestamos(FechaRegistro, FehaEntrega, IdHerramientas, IdEmpleado, Cantidad, Status) VALUES (@FechaRegistro, @FechaEntrega, @IdHerramienta, @IdEmpleado, @Cantidad, 'Activo')";
+                    string query = "INSERT INTO Prestamos(FechaRegistro, FehaEntrega, IdHerramientas, IdEmpleado, Cantidad, Status, ID_USER) VALUES (@FechaRegistro, @FechaEntrega, @IdHerramienta, @IdEmpleado, @Cantidad, 'Activo', @User_ID)";
                     
                     SqlCommand cmd = new SqlCommand(query, cn);
 
-                    string updateExistenciaQuery = "UPDATE Herramientas SET ExistenciaH = ExistenciaH - @Cantidad WHERE IdHerramientas = @IdHerramienta";
+                    string updateExistenciaQuery = "UPDATE Herramientas SET ExistenciaH = (ExistenciaH - @Cantidad), ID_USER = @ID_USER WHERE IdHerramientas = @IdHerramienta";
 
                     SqlCommand cmdUpdateExistencia = new SqlCommand(updateExistenciaQuery, cn);
                     cmdUpdateExistencia.Parameters.AddWithValue("@IdHerramienta", prestamo.IdHerramienta);
                     cmdUpdateExistencia.Parameters.AddWithValue("@Cantidad", prestamo.Cantidad);
+                    cmdUpdateExistencia.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                     cmdUpdateExistencia.ExecuteNonQuery();
 
                     DateTime fechaRegistro = fechaprestamo_Datepicker.Value;
                     string fechaRegistroFormateada = fechaRegistro.ToString("yyyy-MM-dd");
                     cmd.Parameters.AddWithValue("@FechaRegistro", fechaRegistroFormateada);
-
                     DateTime fechaEntrega = fechadevolucion_Datepicker.Value;
                     string fechaEntregaFormateada = fechaEntrega.ToString("yyyy-MM-dd");
                     cmd.Parameters.AddWithValue("@FechaEntrega", fechaEntregaFormateada);
-
                     cmd.Parameters.AddWithValue("@IdHerramienta", prestamo.IdHerramienta);
                     cmd.Parameters.AddWithValue("@IdEmpleado", prestamo.IdEmpleado);
                     cmd.Parameters.AddWithValue("@Cantidad", prestamo.Cantidad);
+                    cmd.Parameters.AddWithValue("@User_ID", UserSession.UserId);
 
                     cmd.ExecuteNonQuery();
                 }

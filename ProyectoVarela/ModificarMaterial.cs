@@ -98,7 +98,7 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "UPDATE MATERIAL SET MATERIAL = @material,TIPO = @tipo,CALIBRE = @calibre,MEDIDA =@medida,EXISTENCIA = @existencia WHERE IDMATERIAL = @id";
+                    string query = "UPDATE MATERIAL SET MATERIAL = @material,TIPO = @tipo,CALIBRE = @calibre,MEDIDA =@medida,EXISTENCIA = @existencia, ID_USER=@ID_USER WHERE IDMATERIAL = @id";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@id", txt_idmaterial.Text);
                     cmd.Parameters.AddWithValue("@material", txt_material.Text);
@@ -106,6 +106,7 @@ namespace ProyectoVarela
                     cmd.Parameters.AddWithValue("@calibre", txt_calibre.Text);
                     cmd.Parameters.AddWithValue("@medida", txt_medida.Text);
                     cmd.Parameters.AddWithValue("@existencia", txt_existencia.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                     int filasActualizadas = cmd.ExecuteNonQuery();
                     if (filasActualizadas > 0)
                     {
@@ -153,6 +154,11 @@ namespace ProyectoVarela
 
                     if (EmpleadoExistente > 0)
                     {
+                        string queryContext = "INSERT INTO UsuarioContexto (SesionID) VALUES (@SesionID)";
+                        SqlCommand cmdContext = new SqlCommand(queryContext, cn);
+                        cmdContext.Parameters.AddWithValue("@SesionID", UserSession.UserId);
+                        cmdContext.ExecuteNonQuery();
+
                         string query = "DELETE FROM MATERIAL WHERE IDMATERIAL = @id";
                         SqlCommand cmd = new SqlCommand(query, cn);
                         cmd.Parameters.AddWithValue("@id", txt_idmaterial.Text);

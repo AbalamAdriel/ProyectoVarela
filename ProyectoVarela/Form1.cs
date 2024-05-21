@@ -44,16 +44,17 @@ namespace ProyectoVarela
             consultar.ShowDialog(this);
         }
 
-        private void btn_proyecto_Click(object sender, EventArgs e)
-        {
-            ConsultarProyecto proy = new ConsultarProyecto();
-            proy.ShowDialog(this);
-        }
 
         private void btn_Proveedores_Click(object sender, EventArgs e)
         {
             ConsultarProvedor prov = new ConsultarProvedor();
             prov.ShowDialog(this);
+        }
+
+        private void btnNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            FRMUsuarios formularioUsuarios = new FRMUsuarios();
+            formularioUsuarios.ShowDialog(this);
         }
     }
 }

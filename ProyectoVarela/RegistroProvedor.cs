@@ -45,13 +45,14 @@ namespace ProyectoVarela
                 using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                 {
                     cn.Open();
-                    string query = "INSERT INTO PROVEDORES (IDPROVEDORES,NOMBRE,CELULAR,DIRECCION,EMPRESA) VALUES (@IDPROVEDORES,@NOMBRE,@CELULAR,@DIRECCION,@EMPRESA)";
+                    string query = "INSERT INTO PROVEDORES (IDPROVEDORES,NOMBRE,CELULAR,DIRECCION,EMPRESA, ID_USER) VALUES (@IDPROVEDORES,@NOMBRE,@CELULAR,@DIRECCION,@EMPRESA,@ID_USER)";
                     SqlCommand cmd = new SqlCommand(query, cn);
                     cmd.Parameters.AddWithValue("@IDPROVEDORES", txt_idprovedor.Text);
                     cmd.Parameters.AddWithValue("@NOMBRE", txt_nombre.Text);
                     cmd.Parameters.AddWithValue("@CELULAR", txt_celular.Text);
                     cmd.Parameters.AddWithValue("@DIRECCION", txt_direccion.Text);
                     cmd.Parameters.AddWithValue("@EMPRESA", txt_empresa.Text);
+                    cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                     int fila = cmd.ExecuteNonQuery();
                     if (fila > 0)

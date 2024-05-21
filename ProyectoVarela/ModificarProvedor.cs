@@ -82,13 +82,14 @@ namespace ProyectoVarela
                     using (SqlConnection cn = new SqlConnection(SqlHelper.GetConnectionString()))
                     {
                         cn.Open();
-                        string query = "UPDATE PROVEDORES SET NOMBRE = @nombre,DIRECCION = @direccion,CELULAR=@celular,EMPRESA=@empresa WHERE IDPROVEDORES = @id";
+                        string query = "UPDATE PROVEDORES SET NOMBRE = @nombre,DIRECCION = @direccion,CELULAR=@celular,EMPRESA=@empresa, ID_USER = @ID_USER WHERE IDPROVEDORES = @id";
                         SqlCommand cmd = new SqlCommand(query, cn);
                         cmd.Parameters.AddWithValue("@id", txt_idprovedor.Text);
                         cmd.Parameters.AddWithValue("@nombre", txt_nombre.Text);
                         cmd.Parameters.AddWithValue("@celular", txt_celular.Text);
                         cmd.Parameters.AddWithValue("@direccion", txt_direccion.Text);
                         cmd.Parameters.AddWithValue("@empresa", txt_empresa.Text);
+                        cmd.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
                         int filasActualizadas = cmd.ExecuteNonQuery();
                         if (filasActualizadas > 0)
                         {
@@ -134,6 +135,11 @@ namespace ProyectoVarela
 
                     if (EmpleadoExistente > 0)
                     {
+                        string queryContext = "INSERT INTO UsuarioContexto (SesionID) VALUES (@SesionID)";
+                        SqlCommand cmdContext = new SqlCommand(queryContext, cn);
+                        cmdContext.Parameters.AddWithValue("@SesionID", UserSession.UserId);
+                        cmdContext.ExecuteNonQuery();
+
                         string query = "DELETE FROM PROVEDORES WHERE IDPROVEDORES = @id";
                         SqlCommand cmd = new SqlCommand(query, cn);
                         cmd.Parameters.AddWithValue("@id", txt_idprovedor.Text);

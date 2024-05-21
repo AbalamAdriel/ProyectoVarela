@@ -101,12 +101,13 @@ namespace ProyectoVarela
             {
                 cn.Open();
 
-                string updateExistenciaQuery = "UPDATE Herramientas SET ExistenciaH = ExistenciaH + @Cantidad WHERE IdHerramientas = @IdHerramienta";
+                string updateExistenciaQuery = "UPDATE Herramientas SET ExistenciaH = (ExistenciaH + @Cantidad), ID_USER = @ID_USER  WHERE IdHerramientas = @IdHerramienta";
 
                 SqlCommand cmdUpdateExistencia = new SqlCommand(updateExistenciaQuery, cn);
 
                 cmdUpdateExistencia.Parameters.AddWithValue("@IdHerramienta", PrestamoADevolver.IdHerramienta);
                 cmdUpdateExistencia.Parameters.AddWithValue("@Cantidad", PrestamoADevolver.Cantidad);
+                cmdUpdateExistencia.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                 int rowsAffected = cmdUpdateExistencia.ExecuteNonQuery();
 
@@ -117,11 +118,12 @@ namespace ProyectoVarela
                     return;
                 }
 
-                string query = "UPDATE Prestamos SET Status = 'Completado' WHERE IDPrestamo = @IDPrestamo";
+                string query = "UPDATE Prestamos SET Status = 'Completado', ID_USER = @ID_USER WHERE IDPrestamo = @IDPrestamo";
 
                 SqlCommand cmdUpdatePrestamos = new SqlCommand(query, cn);
 
                 cmdUpdatePrestamos.Parameters.AddWithValue("@IDPrestamo", PrestamoADevolver.IdPrestamo);
+                cmdUpdatePrestamos.Parameters.AddWithValue("@ID_USER", UserSession.UserId);
 
                 rowsAffected = cmdUpdatePrestamos.ExecuteNonQuery();
 

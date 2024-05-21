@@ -5,17 +5,11 @@ namespace ProyectoVarela.Utilerias
 {
     public static class SqlHelper
     {
-        public static string userName;
-        public static string password;
         public static string GetConnectionString()
         {
             string baseConnectionString = ConfigurationManager.ConnectionStrings["ProyectoVarelaConnectionString"].ConnectionString;
-            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(baseConnectionString);
 
-            connectionStringBuilder.UserID = userName;
-            connectionStringBuilder.Password = password;
-
-            return connectionStringBuilder.ToString();
+            return baseConnectionString;
         }
 
         //public static string GetConnectionString()

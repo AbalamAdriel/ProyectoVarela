@@ -42,9 +42,6 @@ namespace ProyectoVarela
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPrestamos = new System.Windows.Forms.DataGridView();
-            this.nombreHerramientaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prestamoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboHerramientas = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboEmpleados = new System.Windows.Forms.ComboBox();
@@ -54,11 +51,14 @@ namespace ProyectoVarela
             this.fechaprestamo_Datepicker = new System.Windows.Forms.DateTimePicker();
             this.fechaPublicacion_Lbl = new System.Windows.Forms.Label();
             this.cod_Lbl = new System.Windows.Forms.Label();
+            this.nombreHerramientaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prestamoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cantidad_UpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prestamoBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prestamoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // aceptar_Btn
@@ -167,29 +167,6 @@ namespace ProyectoVarela
             this.dataGridViewPrestamos.Size = new System.Drawing.Size(361, 168);
             this.dataGridViewPrestamos.TabIndex = 116;
             // 
-            // nombreHerramientaDataGridViewTextBoxColumn
-            // 
-            this.nombreHerramientaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombreHerramientaDataGridViewTextBoxColumn.DataPropertyName = "NombreHerramienta";
-            this.nombreHerramientaDataGridViewTextBoxColumn.HeaderText = "Herramienta";
-            this.nombreHerramientaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreHerramientaDataGridViewTextBoxColumn.Name = "nombreHerramientaDataGridViewTextBoxColumn";
-            this.nombreHerramientaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cantidadDataGridViewTextBoxColumn
-            // 
-            this.cantidadDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cantidadDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // prestamoBindingSource
-            // 
-            this.prestamoBindingSource.DataSource = typeof(ProyectoVarela.Entidades.Prestamo);
-            // 
             // cboHerramientas
             // 
             this.cboHerramientas.BackColor = System.Drawing.Color.LightGreen;
@@ -230,6 +207,7 @@ namespace ProyectoVarela
             this.fechadevolucion_Datepicker.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechadevolucion_Datepicker.Location = new System.Drawing.Point(190, 121);
             this.fechadevolucion_Datepicker.Margin = new System.Windows.Forms.Padding(4);
+            this.fechadevolucion_Datepicker.MinDate = new System.DateTime(2024, 5, 5, 0, 0, 0, 0);
             this.fechadevolucion_Datepicker.Name = "fechadevolucion_Datepicker";
             this.fechadevolucion_Datepicker.Size = new System.Drawing.Size(259, 25);
             this.fechadevolucion_Datepicker.TabIndex = 122;
@@ -260,9 +238,11 @@ namespace ProyectoVarela
             this.fechaprestamo_Datepicker.Font = new System.Drawing.Font("Mongolian Baiti", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaprestamo_Datepicker.Location = new System.Drawing.Point(190, 62);
             this.fechaprestamo_Datepicker.Margin = new System.Windows.Forms.Padding(4);
+            this.fechaprestamo_Datepicker.MinDate = new System.DateTime(2024, 5, 5, 18, 52, 42, 0);
             this.fechaprestamo_Datepicker.Name = "fechaprestamo_Datepicker";
             this.fechaprestamo_Datepicker.Size = new System.Drawing.Size(259, 25);
             this.fechaprestamo_Datepicker.TabIndex = 119;
+            this.fechaprestamo_Datepicker.Value = new System.DateTime(2024, 5, 5, 18, 52, 42, 0);
             this.fechaprestamo_Datepicker.ValueChanged += new System.EventHandler(this.fechaprestamo_Datepicker_ValueChanged);
             // 
             // fechaPublicacion_Lbl
@@ -287,6 +267,29 @@ namespace ProyectoVarela
             this.cod_Lbl.TabIndex = 117;
             this.cod_Lbl.Text = "Código del Empleado:";
             // 
+            // nombreHerramientaDataGridViewTextBoxColumn
+            // 
+            this.nombreHerramientaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreHerramientaDataGridViewTextBoxColumn.DataPropertyName = "NombreHerramienta";
+            this.nombreHerramientaDataGridViewTextBoxColumn.HeaderText = "Herramienta";
+            this.nombreHerramientaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nombreHerramientaDataGridViewTextBoxColumn.Name = "nombreHerramientaDataGridViewTextBoxColumn";
+            this.nombreHerramientaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cantidadDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // prestamoBindingSource
+            // 
+            this.prestamoBindingSource.DataSource = typeof(ProyectoVarela.Entidades.Prestamo);
+            // 
             // RegistrarPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -309,9 +312,9 @@ namespace ProyectoVarela
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrestamos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prestamoBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.prestamoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,8 +338,8 @@ namespace ProyectoVarela
         private DateTimePicker fechadevolucion_Datepicker;
         private Label label1;
         private Label label2;
-        private DateTimePicker fechaprestamo_Datepicker;
         private Label fechaPublicacion_Lbl;
         private Label cod_Lbl;
+        protected DateTimePicker fechaprestamo_Datepicker;
     }
 }
